@@ -1,7 +1,8 @@
 #include "oled.h"
 
-Oled::Oled(Print *serial){
+Oled::Oled(NewSoftSerial *serial, int resetPin){
     _serial = serial;
+    _resetPin = resetPin;
 }
 
 
@@ -31,11 +32,11 @@ void Oled::resetDisplay()
 
 {
 
-  digitalWrite(OLED_RESETPIN, LOW);
+  digitalWrite(_resetPin, LOW);
 
   delay(20);                  
 
-  digitalWrite(OLED_RESETPIN, HIGH);
+  digitalWrite(_resetPin, HIGH);
 
   delay(20);  
 

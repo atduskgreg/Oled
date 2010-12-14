@@ -90,17 +90,19 @@
 
 #include "Print.h"
 #include "WProgram.h"
+#include "NewSoftSerial.h"
 
 class Oled
 {
 private:
   // per object data
-  Print *_serial;
+  NewSoftSerial *_serial;
+  int _resetPin;
 
 public:
     void resetDisplay();
     char getResponse();
-    Oled(Print *serial);
+    Oled(NewSoftSerial *serial, int resetPin);
     void init();
     int getRGB(int red, int green, int blue);
     void clear();
